@@ -1,0 +1,37 @@
+/* :local(.scoped) { */
+
+/* .scoped{
+  :global(.footer-content) {
+    color: red;
+
+    :global(.footer-content-1) {
+      color: pink;
+    }
+  }
+
+  :global(.footer-1) {
+    color: green;
+  }
+
+  :global(.footer-2) {
+    color: blue;
+  }
+} */
+ /* :local(.scoped) { */
+ .scoped :global {
+    .footer-content {
+      color: red;
+
+      .footer-content-1 {
+        color: pink;
+      }
+    }
+
+    .footer-1 {
+      color: green;
+    }
+
+    .footer-2 {
+      color: blue;
+    }
+}

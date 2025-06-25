@@ -1,0 +1,11 @@
+{
+  "name": "web-study-monorepo",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "workspaces": [
+    "packages/*"
+  ]
+}
