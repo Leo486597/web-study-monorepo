@@ -1,23 +1,24 @@
 # The noisy part - CSS config
+
 - global nesting not works ?
-- just enough libs please: 
-"devDependencies": {
-    "@eslint/js": "^9.29.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.6.0",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.29.0",
-    "eslint-plugin-airbnb-styling": "^1.0.2",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.2.0",
-    "postcss": "^8.5.6",
-    "postcss-global-nested": "^1.2.0",
-    "postcss-import": "^16.1.1",
-    "postcss-nested": "^7.0.2",
-    "postcss-nesting": "^13.0.2",
-    "tailwindcss": "^4.1.10",
-    "vite": "^7.0.0",
-    "vite-plugin-eslint": "^1.8.1"
+- just enough libs please:
+  "devDependencies": {
+  "@eslint/js": "^9.29.0",
+  "@types/react": "^19.1.8",
+  "@types/react-dom": "^19.1.6",
+  "@vitejs/plugin-react": "^4.6.0",
+  "autoprefixer": "^10.4.21",
+  "eslint": "^9.29.0",
+  "eslint-plugin-airbnb-styling": "^1.0.2",
+  "eslint-plugin-react-hooks": "^5.2.0",
+  "eslint-plugin-react-refresh": "^0.4.20",
+  "globals": "^16.2.0",
+  "postcss": "^8.5.6",
+  "postcss-global-nested": "^1.2.0",
+  "postcss-import": "^16.1.1",
+  "postcss-nested": "^7.0.2",
+  "postcss-nesting": "^13.0.2",
+  "tailwindcss": "^4.1.10",
+  "vite": "^7.0.0",
+  "vite-plugin-eslint": "^1.8.1"
   }

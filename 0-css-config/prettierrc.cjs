@@ -1,5 +1,6 @@
-// const prettier = require("eslint-plugin-airbnb-styling/prettier");
+const prettier = require("eslint-plugin-airbnb-styling/prettier");
 
-// module.exports = {
-//   ...prettier,
-// };
+module.exports = {
+  ...prettier,
+  printWidth: 80,
+};
