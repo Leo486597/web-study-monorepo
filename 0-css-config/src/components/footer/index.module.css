@@ -16,7 +16,7 @@
   }
 } */
 /* .scoped :global { */
-:local(.scoped) {
+:local(.test1) {
   .footer-content {
     color: red;
 
@@ -32,4 +32,8 @@
   .footer-2 {
     color: blue;
   }
+}
+
+:local(.test2) {
+  color: pink
 }

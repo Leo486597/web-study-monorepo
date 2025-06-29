@@ -2,6 +2,7 @@
   *,
   *::before,
   *::after {
+    /* why default border-box mode here */
     box-sizing: border-box;
   }
 
@@ -55,6 +56,7 @@
 
   p,
   li {
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap */
     text-wrap: pretty;
   }
 
@@ -68,9 +70,34 @@
   button,
   textarea,
   select {
-    font: inherit;
+    /* when to use inherit, when is auto inherit?
+    /* https://dev.to/chintanonweb/from-beginner-to-pro-unlock-the-power-of-css-inheritance-4id0 */
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Inheritance */
+    /* color
+    font font-family font-size
+    letter-spacing
+    text-align
+    visibility
+    white-space
+    pointer-events
+    ...
+     */
+
+     /* Box-model properties:
+margin
+padding
+border
+width
+height
+Positioning and layout properties:
+display
+position
+z-index */
+    /* font: inherit; */
   }
 }
+
+
 
 /* theme */
 @layer base {
@@ -103,6 +130,10 @@
     --fs-800: 2rem;
     --fs-900: 3.75rem;
     --fs-1000: 3.75rem;
+
+    --z-index-0: 0;
+    --z-index-10: 10;
+    --z-index-20: 20;
 
     @media (width > 760px) {
       --fs-300: 0.875rem;
@@ -153,7 +184,8 @@
   body {
     font-family: var(--ff-body);
     font-size: var(--font-size-regular);
-    color: var(--text-main);
+    /* color: var(--text-main); */
+    color: pink;
     background-color: var(--background-main);
   }
 
@@ -168,6 +200,7 @@
 
   a {
     color: var(--text-high-contrast);
+    text-decoration: none;
   }
 
   a:hover,
@@ -177,6 +210,12 @@
 
   img {
     border-radius: var(--border-radius-3);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -201,6 +240,7 @@
     padding-inline: var(--wrapper-padding);
 
     /* helps to match the Figma file */
+    /* reset back to default */
     box-sizing: content-box;
   }
 
@@ -214,11 +254,13 @@
 
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block-end */
   .section {
+    /* paddint top and down between sections */
     padding-block: 3.75rem;
 
     @media (min-width: 760px) {
       padding-block: 8rem;
 
+      /* event smaller,  */
       &[data-padding="compact"] {
         padding-block: 4.5rem;
       }
@@ -251,39 +293,60 @@
 
 @layer components {
   .site-header {
+    /* rem em px */
+    /* padding-block: 1rem; */
     padding-block: 1rem;
-  }
+    /* vs padding top + padding bottom : 1 rem */
 
-  .site-header__inner {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 2rem;
-    justify-content: space-between;
+    /* BEM naming convension */
+    /* https://getbem.com/naming/ */
+    /* Block: .card, .site-header, .main-navigation, .search-form*/
+    /* Element  .card__header, .card__title*/
+    /* Modifier button--primary, .card__header--size-big ...*/
+    /* -> -- for state, __ for block's element, - for internal connection*/
+
+    /* &__inner need css processor */
+    /* https://sass-lang.com/playground/#eJxVkE1uwjAQhfc+xYhSRCUcAVE3zobuegs0iSeJW+NYHgeKKu7eOI1QsvHP83vzzfhwOPVMsGJkVtZwXBViplSd7cIgiXXduSg5YvWt4JPslaKpcAcfwaAtxNoHc8Fwl2NAwUue50Oq7PQdfgXAIp4wGXpPTm9nDztgdCyZgqnfiiGUntQ8WoiHEDgWnDhL7kAE2Ki2u1JIpqdt3DKu0NJ2GdnB2pqmjY6GaeG4fx3JjwTK2ESSLaGmMDI9am1cI0vbpTEOgS7JvDmfjXOTB0Ab9hbvCmpLP8UopZO8BfQK0vovNum6z96HKnCcSgF89RxNnZpzkdL47LEiWVK8EblnbydNZd8s/uYPVNyRMw== */
+    .site-header__inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      justify-content: space-between;
+    }
   }
 
   .primary-navigation {
     ul {
-      list-style: none;
+      /* move to base */
+      /* list-style: none;
       margin: 0;
-      padding: 0;
+      padding: 0; */
+
+      /* web horizontial display */
+      /* layout: flex */
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem 2rem;
     }
 
-    a {
+    /* a {
       text-decoration: none;
-    }
+    } */
   }
 
+  /* hide in wide screen */
   [aria-controls="primary-navigation"] {
     display: none;
   }
 
+  /* behaviors under 760px */
   @media (width < 760px) {
+    /* styling menu button */
     [aria-controls="primary-navigation"] {
+      /* default is none */
       display: block;
-      z-index: 100;
+      z-index: var(--z-index-20);
+
       background: transparent;
       border: 0;
 
@@ -292,14 +355,20 @@
       }
     }
 
+    /* provide an anchor for popup menu */
     .site-header {
       position: relative;
     }
 
+    /* styling popup menu */
     .primary-navigation {
+      /* shown when aria-expanded="true" */
+      /* js to handle menu button click event */
       display: none;
+      /* here is relative to site-header */
       position: absolute;
-      z-index: 10;
+      /* menu button is 100 */
+      z-index: var(--z-index-10);
       top: 0;
       right: 0;
       padding: 2rem;
@@ -307,13 +376,18 @@
       background: var(--background-accent-main);
 
       ul {
+        /* flex layout column */
         flex-direction: column;
         gap: 0;
+        /* will be inherit by li */
         font-size: var(--fs-700);
         font-family: var(--ff-heading);
         font-weight: 700;
       }
 
+      /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors */
+      /* Next-sibling_combinator: https://developer.mozilla.org/en-US/docs/Web/CSS/Next-sibling_combinator */
+      /* + > ~ */
       li + li {
         margin-top: 1rem;
         padding-top: 1rem;
@@ -321,6 +395,7 @@
       }
     }
 
+    /* when menu button is open */
     [aria-expanded="true"] ~ .primary-navigation {
       display: block;
     }
@@ -454,6 +529,7 @@
     font-size: var(--font-size-lg);
   }
 
+  /* why ? */
   .visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -462,5 +538,25 @@
     position: absolute;
     white-space: nowrap;
     width: 1px;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .h-100 {
+    height: 100px;
+  }
+  .h-inherit {
+    height: inherit;
+  }
+
+  .h-100-p {
+    height: 100%;
   }
 }

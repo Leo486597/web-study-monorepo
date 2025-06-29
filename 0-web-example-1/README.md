@@ -12,3 +12,9 @@ These files are the step-by-step progress through the course project. The number
 I only provide starting points, because `05-start` would be the same as the ending of section 4.
 
 I hope that you enjoy the course!
+
+- Resources
+    - https://website-from-scratch-1.netlify.app/
+    - https://website-from-scratch-2.netlify.app/
+    - https://www.figma.com/design/XV3mC19r1ih4SymTnKQu4f/FungiFinders
+    - https://github.com/kevin-powell/fem-website-from-scratch-progress
